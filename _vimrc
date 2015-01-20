@@ -55,6 +55,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
+Plugin 'scrooloose/nerdtree'
 
 " Javascript plugins
 Plugin 'skammer/vim-css-color'
@@ -80,6 +81,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 map <C-J> <C-W>j
 map <C-K> <C-W>k
