@@ -56,6 +56,12 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
+" Javascript plugins
+Plugin 'skammer/vim-css-color'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'mattn/emmet-vim'
+
+" Golang plugins
 Plugin 'fatih/vim-go'
 Plugin 'majutsushi/tagbar'
 
