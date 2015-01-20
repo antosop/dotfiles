@@ -60,6 +60,8 @@ Plugin 'scrooloose/nerdtree'
 " Javascript plugins
 Plugin 'skammer/vim-css-color'
 Plugin 'jiangmiao/auto-pairs'
+	" for Emmet-Vim"
+Plugin 'mattn/webapi-vim'
 Plugin 'mattn/emmet-vim'
 
 " Golang plugins
@@ -84,6 +86,9 @@ filetype plugin indent on    " required
 
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
 
 map <C-J> <C-W>j
 map <C-K> <C-W>k
