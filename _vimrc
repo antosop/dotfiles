@@ -58,7 +58,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'bling/vim-airline'
-
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'sukima/xmledit'
 
 " Git plugins
 Plugin 'tpope/vim-fugitive'
@@ -95,7 +97,11 @@ autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let g:user_emmet_leader_key='<C-Z>'
-let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.snippets_custom.json')), "\n"))
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/_snippets_custom.json')), "\n"))
+
+syntax on
+filetype on
+au BufNewFile,BufRead *.xaml set filetype=xml
 
 map <C-J> <C-W>j
 map <C-K> <C-W>k
