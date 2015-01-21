@@ -67,6 +67,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Javascript plugins
+Plugin 'pangloss/vim-javascript'
 Plugin 'skammer/vim-css-color'
 Plugin 'jiangmiao/auto-pairs'
 	" for Emmet-Vim"
