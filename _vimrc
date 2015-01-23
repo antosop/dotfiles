@@ -6,6 +6,7 @@ let mapleader = ","
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:airline#extensions#tabline#enabled = 1
+let g:netrw_scp_cmd=$SCP_CMD + " -q"
 set hidden
 
 " Open new buffer
@@ -63,6 +64,7 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
+Plugin 'findstr.vim'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
