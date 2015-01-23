@@ -2,6 +2,23 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+let mapleader = ","
+
+let g:ctrlp_working_path_mode = 'ra'
+let g:airline#extensions#tabline#enabled = 1
+set hidden
+
+" Open new buffer
+nmap <leader>T :enew<CR>
+" Move to the next buffer
+nmap <leader>n :bnext<CR>
+" Move to the previous buffer
+nmap <leader>N :bprevious<CR>
+" Close current buffer and move to previous
+nmap <leader>bq :bp <BAR> bd #<CR>
+" Show all open buffers and their status
+nmap <leader>bl :ls<CR>
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -104,7 +121,11 @@ let g:user_emmet_leader_key='<C-Z>'
 syntax on
 filetype on
 au BufNewFile,BufRead *.xaml set filetype=xml
+" XML FOLDING
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
 
+nmap <Leader>v :NERDTreeFind<CR>
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-H> <C-W>h
@@ -112,4 +133,5 @@ map <C-L> <C-W>l
 colorscheme darkblue
 
 source $HOME/vimfiles/rc/go_mappings.vim
+
 
