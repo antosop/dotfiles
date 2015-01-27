@@ -80,6 +80,7 @@ Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'sukima/xmledit'
+Plugin 'brandonbloom/csearch.vim'
 
 " Git plugins
 Plugin 'tpope/vim-fugitive'
