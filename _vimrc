@@ -6,7 +6,6 @@ let mapleader = ","
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:airline#extensions#tabline#enabled = 1
-let g:netrw_scp_cmd=$SCP_CMD + " -q"
 set hidden
 
 " Open new buffer
@@ -64,7 +63,6 @@ Plugin 'gmarik/Vundle.vim'
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
-Plugin 'findstr.vim'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -135,9 +133,12 @@ noremap <C-J> <C-W>j
 noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
+nnoremap <Leader>ss :CSearch<SPACE>
+nnoremap <Leader>sf :CSearch<SPACE>-f<SPACE>.+\.
+
 colorscheme darkblue
 
-nmap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
 source $HOME/vimfiles/rc/go_mappings.vim
 
