@@ -10,15 +10,15 @@ let g:netrw_scp_cmd=$SCP_CMD + " -q"
 set hidden
 
 " Open new buffer
-nmap <leader>T :enew<CR>
+nnoremap <leader>T :enew<CR>
 " Move to the next buffer
-nmap <leader>n :bnext<CR>
+nnoremap <leader>n :bnext<CR>
 " Move to the previous buffer
-nmap <leader>N :bprevious<CR>
+nnoremap <leader>N :bprevious<CR>
 " Close current buffer and move to previous
-nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
-nmap <leader>bl :ls<CR>
+nnoremap <leader>bl :ls<CR>
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -128,13 +128,17 @@ au BufNewFile,BufRead *.xaml set filetype=xml
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
 
-nmap <Leader>v :NERDTreeFind<CR>
-map <C-J> <C-W>j
-map <C-K> <C-W>k
-map <C-H> <C-W>h
-map <C-L> <C-W>l
+nnoremap - ddj0P
+nnoremap _ ddk0P
+nnoremap <Leader>v :NERDTreeFind<CR>
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
 colorscheme darkblue
 
+nmap <leader>ev :e $MYVIMRC<CR>
+nnoremap <leader>rv :so $MYVIMRC<CR>
 source $HOME/vimfiles/rc/go_mappings.vim
 
 
