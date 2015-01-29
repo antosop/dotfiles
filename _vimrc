@@ -62,6 +62,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " Javascript plugins
 Plugin 'pangloss/vim-javascript'
+"Plugin 'jelera/vim-javascript-syntax'
 Plugin 'skammer/vim-css-color'
 Plugin 'jiangmiao/auto-pairs'
 	" for Emmet-Vim"
@@ -87,9 +88,27 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+augroup nerdtreegroup
+	autocmd!
+	autocmd vimenter * NERDTree
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+augroup END
 
-autocmd vimenter * NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+function! JavaScriptFold() 
+	setl foldmethod=syntax
+	setl foldlevelstart=1
+	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+	function! FoldText()
+		return substitute(getline(v:foldstart), '{.*', '{...}','')
+	endfunction
+	setl foldtext=FoldText()
+endfunction
+augroup javascriptgroup
+	autocmd!
+	autocmd FileType javascript call JavaScriptFold()
+	autocmd FileType javascript setl fen
+augroup END
 
 let g:user_emmet_leader_key='<C-Z>'
 " !! BROKEN !!
@@ -104,7 +123,7 @@ au filetype xml setlocal foldmethod=syntax
 
 nnoremap - :<c-u>execute "normal! dd" . v:count1 . "j0P"<cr>
 nnoremap _ :<c-u>execute "normal! dd" . v:count1 . "k0P"<cr>
-nnoremap <leader>v :nerdtreefind<cr>
+nnoremap <leader>v :NERDTreeFind<cr>
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-h> <c-w>h
