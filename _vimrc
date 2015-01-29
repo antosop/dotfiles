@@ -97,7 +97,19 @@ let g:user_emmet_leader_key='<C-Z>'
 
 syntax on
 filetype on
-au BufNewFile,BufRead *.xaml set filetype=xml
+
+"au BufNewFile,BufRead *.xaml set filetype=xml
+" REPLACED BY THIS
+function! FiletypeEditorconfig(config)
+	if has_key(a:config, 'vim_filetype')
+		let &filetype = a:config['vim_filetype']
+	endif
+
+	return 0    " Return 0 to show no error happened
+endfunction
+
+call editorconfig#AddNewHook(function('FiletypeEditorconfig'))
+
 " XML FOLDING
 let g:xml_syntax_folding=1
 au FileType xml setlocal foldmethod=syntax
@@ -117,5 +129,4 @@ colorscheme darkblue
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
 source $HOME/vimfiles/rc/go_mappings.vim
-
 
