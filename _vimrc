@@ -97,36 +97,28 @@ let g:user_emmet_leader_key='<C-Z>'
 
 syntax on
 filetype on
-
-"au BufNewFile,BufRead *.xaml set filetype=xml
-" REPLACED BY THIS
-function! FiletypeEditorconfig(config)
-	if has_key(a:config, 'vim_filetype')
-		let &filetype = a:config['vim_filetype']
-	endif
-
-	return 0    " Return 0 to show no error happened
-endfunction
-
-call editorconfig#AddNewHook(function('FiletypeEditorconfig'))
-
-" XML FOLDING
+au bufnewfile,bufread *.xaml set filetype=xml
+" xml folding
 let g:xml_syntax_folding=1
-au FileType xml setlocal foldmethod=syntax
+au filetype xml setlocal foldmethod=syntax
 
-nnoremap - ddj0P
-nnoremap _ ddk0P
-nnoremap <Leader>v :NERDTreeFind<CR>
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
-nnoremap <Leader>ss :CSearch<SPACE>
+nnoremap - :<c-u>execute "normal! dd" . v:count1 . "j0P"<cr>
+nnoremap _ :<c-u>execute "normal! dd" . v:count1 . "k0P"<cr>
+nnoremap <leader>v :nerdtreefind<cr>
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
+noremap <c-h> <c-w>h
+noremap <c-l> <c-w>l
+nnoremap <leader>ss :csearch<space>
 nnoremap <Leader>sf :CSearch<SPACE>-f<SPACE>.+\.
+
+inoremap jk <esc>
+inoremap <esc> jk
 
 colorscheme darkblue
 
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
 source $HOME/vimfiles/rc/go_mappings.vim
+
 
