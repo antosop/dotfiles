@@ -1,5 +1,6 @@
 [extensions]
 color =
+rebase =
 
 [color]
 mode = win32
