@@ -1,10 +1,21 @@
+" Initial Setup------------------------------------{{{
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
 let mapleader = ","
+colorscheme darkblue
 
-let g:ctrlp_working_path_mode = 'ra'
+" }}}
+
+" Vimscript File Settings--------------------------{{{
+augroup filetype_vim
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+" Buffer Tab Settings and Navigation--------------------------------{{{
 let g:airline#extensions#tabline#enabled = 1
 set hidden
 
@@ -18,6 +29,9 @@ nnoremap <leader>N :bprevious<CR>
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 " Show all open buffers and their status
 nnoremap <leader>bl :ls<CR>
+" }}}
+
+" Plugins-----------------------------------------------------------{{{
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -62,7 +76,6 @@ Plugin 'airblade/vim-gitgutter'
 
 " Javascript plugins
 Plugin 'pangloss/vim-javascript'
-"Plugin 'jelera/vim-javascript-syntax'
 Plugin 'skammer/vim-css-color'
 Plugin 'jiangmiao/auto-pairs'
 	" for Emmet-Vim"
@@ -88,31 +101,27 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-augroup nerdtreegroup
-	autocmd!
-	autocmd vimenter * NERDTree
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-augroup END
+" }}}
 
-function! JavaScriptFold() 
-	setl foldmethod=syntax
-	setl foldlevelstart=1
-	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+" Ctrlp Settings----------------------------------------------------{{{
 
-	function! FoldText()
-		return substitute(getline(v:foldstart), '{.*', '{...}','')
-	endfunction
-	setl foldtext=FoldText()
-endfunction
-augroup javascriptgroup
-	autocmd!
-	autocmd FileType javascript call JavaScriptFold()
-	autocmd FileType javascript setl fen
-augroup END
+let g:ctrlp_working_path_mode = 'ra'
+" }}}
+
+" NERDTree Settings--------------------------------------------------------{{{
+
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" }}}
+
+" Emmet Settings-------------------------------------------------------------{{{
 
 let g:user_emmet_leader_key='<C-Z>'
 " !! BROKEN !!
 " let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/_snippets_custom.json')), "\n"))
+" }}}
+
+" XML Settings--------------------------------------------------------{{{
 
 syntax on
 filetype on
@@ -120,24 +129,25 @@ au bufnewfile,bufread *.xaml set filetype=xml
 " xml folding
 let g:xml_syntax_folding=1
 au filetype xml setlocal foldmethod=syntax
+" }}}
+
+" Custom Mappings--------------------------------------------------{{{
 
 nnoremap - :<c-u>execute "normal! dd" . v:count1 . "j0P"<cr>
 nnoremap _ :<c-u>execute "normal! dd" . v:count1 . "k0P"<cr>
-nnoremap <leader>v :NERDTreeFind<cr>
+nnoremap <leader>v :nerdtreefind<cr>
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-h> <c-w>h
 noremap <c-l> <c-w>l
 nnoremap <leader>ss :csearch<space>
 nnoremap <Leader>sf :CSearch<SPACE>-f<SPACE>.+\.
-
 inoremap jk <esc>
 inoremap <esc> jk
-
-colorscheme darkblue
-
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
+" }}}
+
+" Include Other Vim Scripts-----------------------------------------------{{{
 source $HOME/vimfiles/rc/go_mappings.vim
-
-
+" }}}
