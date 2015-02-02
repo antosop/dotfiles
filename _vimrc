@@ -26,7 +26,17 @@ nnoremap <leader>n :bnext<CR>
 " Move to the previous buffer
 nnoremap <leader>N :bprevious<CR>
 " Close current buffer and move to previous
-nnoremap <leader>bq :bp <BAR> bd #<CR>
+function! CloseBuffer() 
+	let l:bufCount=len(filter(range(1,bufnr('$')), 'buflisted(v:val)'))
+	if l:bufCount <2
+		enew 
+		bd #
+	else
+		bp 
+		bd #
+	endif
+endfunction
+nnoremap <leader>bq :call CloseBuffer()<CR>
 " Show all open buffers and their status
 nnoremap <leader>bl :ls<CR>
 " }}}
@@ -81,6 +91,9 @@ Plugin 'jiangmiao/auto-pairs'
 	" for Emmet-Vim"
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'michalliu/jsruntime.vim'
+Plugin 'michalliu/jsoncodecs.vim'
+Plugin 'michalliu/sourcebeautify.vim'
 
 " Golang plugins
 Plugin 'fatih/vim-go'
@@ -129,6 +142,24 @@ au bufnewfile,bufread *.xaml set filetype=xml
 " xml folding
 let g:xml_syntax_folding=1
 au filetype xml setlocal foldmethod=syntax
+" }}}
+
+" Javascript Folding-------------------------------------------------------{{{
+function! JavaScriptFold()
+	setl foldmethod=syntax
+	setl foldlevelstart=1
+	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+
+	function! FoldText()
+		return substitute(getline(v:foldstart), '{.*}', '{...}', '')
+	endfunction
+	setl foldtext=FoldText()
+endfunction
+augroup javascript_folding
+	autocmd!
+	autocmd FileType javascript call JavaScriptFold()
+	autocmd FileType javascript setl fen
+augroup END
 " }}}
 
 " Custom Mappings--------------------------------------------------{{{
