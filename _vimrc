@@ -3,6 +3,7 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+set number
 let mapleader = ","
 colorscheme darkblue
 
@@ -79,6 +80,7 @@ Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'sukima/xmledit'
 Plugin 'brandonbloom/csearch.vim'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'sk1418/QFGrep'
 
 " Git plugins
 Plugin 'tpope/vim-fugitive'
@@ -119,6 +121,7 @@ filetype plugin indent on    " required
 " Ctrlp Settings----------------------------------------------------{{{
 
 let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_files = 0
 " }}}
 
 " NERDTree Settings--------------------------------------------------------{{{
@@ -166,7 +169,7 @@ augroup END
 
 nnoremap - :<c-u>execute "normal! dd" . v:count1 . "j0P"<cr>
 nnoremap _ :<c-u>execute "normal! dd" . v:count1 . "k0P"<cr>
-nnoremap <leader>v :nerdtreefind<cr>
+nnoremap <leader>v :NERDTreeFind<cr>
 noremap <c-j> <c-w>j
 noremap <c-k> <c-w>k
 noremap <c-h> <c-w>h
