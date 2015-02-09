@@ -3,8 +3,11 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+set t_Co=256
+syntax on
 set number
 let mapleader = ","
+set background=dark
 colorscheme darkblue
 
 " }}}
@@ -87,15 +90,19 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 " Javascript plugins
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
 Plugin 'skammer/vim-css-color'
 Plugin 'jiangmiao/auto-pairs'
 	" for Emmet-Vim"
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/emmet-vim'
-Plugin 'michalliu/jsruntime.vim'
+"Plugin 'michalliu/jsruntime.vim'
 Plugin 'michalliu/jsoncodecs.vim'
-Plugin 'michalliu/sourcebeautify.vim'
+"Plugin 'michalliu/sourcebeautify.vim'
+Plugin 'marijnh/tern_for_vim'
 
 " Golang plugins
 Plugin 'fatih/vim-go'
@@ -118,10 +125,17 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " }}}
 
-" Ctrlp Settings----------------------------------------------------{{{
+" Plugin Settings----------------------------------------------------{{{
 
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_files = 0
+
+let g:syntastic_check_on_open=1
+
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+let g:tern_show_signature_in_pum=1
+autocmd filetype javascript set updatetime=500
 " }}}
 
 " NERDTree Settings--------------------------------------------------------{{{
@@ -142,6 +156,9 @@ let g:user_emmet_leader_key='<C-Z>'
 syntax on
 filetype on
 au bufnewfile,bufread *.xaml set filetype=xml
+au bufnewfile,bufread *.dgscript set filetype=xml
+au bufnewfile,bufread *.grpscript set filetype=xml
+
 " xml folding
 let g:xml_syntax_folding=1
 au filetype xml setlocal foldmethod=syntax
