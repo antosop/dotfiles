@@ -202,3 +202,15 @@ nnoremap <leader>rv :so $MYVIMRC<CR>
 " Include Other Vim Scripts-----------------------------------------------{{{
 source $HOME/vimfiles/rc/go_mappings.vim
 " }}}
+
+" Nerdtree Escape Commands------------------------------------------------{{{
+augroup nerdtree_commands
+	autocmd!
+	autocmd FileType nerdtree noremap <buffer> <leader>T <C-w>l:enew<CR>
+	autocmd FileType nerdtree noremap <buffer> <leader>n <C-w>l:bnext<CR>
+	autocmd FileType nerdtree noremap <buffer> <leader>N <C-w>l:bprevious<CR>
+	autocmd FileType nerdtree noremap <buffer> <leader>bq <C-w>l:call CloseBuffer()<CR>
+	autocmd FileType nerdtree noremap <buffer> <leader>bl <C-w>l:ls<CR>
+	autocmd FileType nerdtree noremap <buffer> <leader>ev <C-w>l:e $MYVIMRC<CR>
+augroup END
+" }}}
