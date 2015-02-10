@@ -13,5 +13,6 @@ FIREFOX_BIN="/c/Program Files (x86)/Mozilla Firefox/firefox.exe"
 export FIREFOX_BIN
 CHROME_BIN="/c/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 export CHROME_BIN
+export PATH="/c/GoProjects/bin:/c/Program Files (x86)/Vim/vim74-windows:/c/Program Files (x86)/ctags58:$PATH"
 export GOPATH="/c/GoProjects"
 export GOBIN="/c/Go/bin"
