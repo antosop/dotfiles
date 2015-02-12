@@ -103,7 +103,7 @@ Plugin 'mattn/emmet-vim'
 "Plugin 'michalliu/jsruntime.vim'
 Plugin 'michalliu/jsoncodecs.vim'
 "Plugin 'michalliu/sourcebeautify.vim'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 
 " Golang plugins
 Plugin 'fatih/vim-go'
@@ -133,10 +133,10 @@ let g:ctrlp_max_files = 0
 
 let g:syntastic_check_on_open=1
 
-let g:tern_map_keys=1
-let g:tern_show_argument_hints='on_hold'
-let g:tern_show_signature_in_pum=1
-autocmd filetype javascript set updatetime=500
+"let g:tern_map_keys=1
+"let g:tern_show_argument_hints='on_hold'
+"let g:tern_show_signature_in_pum=1
+"autocmd filetype javascript set updatetime=500
 " }}}
 
 " NERDTree Settings--------------------------------------------------------{{{
@@ -198,6 +198,7 @@ inoremap jk <esc>
 inoremap <esc> jk
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>rv :so $MYVIMRC<CR>
+nnoremap <leader>/ :let @/ = ""<CR>
 " }}}
 
 " Include Other Vim Scripts-----------------------------------------------{{{
@@ -213,5 +214,12 @@ augroup nerdtree_commands
 	autocmd FileType nerdtree noremap <buffer> <leader>bq <C-w>l:call CloseBuffer()<CR>
 	autocmd FileType nerdtree noremap <buffer> <leader>bl <C-w>l:ls<CR>
 	autocmd FileType nerdtree noremap <buffer> <leader>ev <C-w>l:e $MYVIMRC<CR>
+augroup END
+" }}}
+
+" HTML return creates brand new line --------------------------------------{{{
+augroup html_autocommands
+	autocmd bufread,bufnew *.html <buffer> inoremap <C-n> <CR><CR><ESC>kA
+	autocmd filetype html setlocal foldmethod=syntax
 augroup END
 " }}}
