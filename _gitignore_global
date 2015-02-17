@@ -43,3 +43,4 @@ Thumbs.db
 # Temporary Editor files #
 ##########################
 *.sw?
+*.*~

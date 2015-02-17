@@ -8,7 +8,6 @@
 [difftool "kdiff3"]
 	path = C:/Program Files/KDiff3/kdiff3.exe
 [core]
-	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
 	excludesfile = c:/Users/lacra/_gitignore_global
 	autocrlf = true
 [gui]
@@ -16,7 +15,7 @@
 	recentrepo = C:/Projects_Lacra/one-exchange
 [user]
 	name = Landon Crapo
-	email = landon.crapo@extendhealth.com
+	email = antosop@gmail.com
 [push]
 	default = simple
 [credential]
