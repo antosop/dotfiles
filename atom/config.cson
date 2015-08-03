@@ -1,0 +1,15 @@
+"*":
+  "exception-reporting":
+    userId: "91c4765c-2ba2-2c2c-0ee9-2a450bc09821"
+  welcome:
+    showOnStartup: false
+  "tree-view":
+    showOnRightSide: true
+  core: {}
+  "vim-mode": {}
+  editor:
+    invisibles: {}
+  "file-watcher":
+    promptWhenFileHasChangedOnDisk: false
+  nuclide:
+    remoteProjectsConfig: []
