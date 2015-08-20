@@ -9,3 +9,18 @@
 # atom.workspace.observeTextEditors (editor) ->
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
+child_process = require 'child_process'
+exec = child_process.exec;
+
+atom.commands.add 'atom-text-editor', 'xaml:open-in-fiver-studio', ->
+		return unless editor = atom.workspace.getActiveTextEditor()
+
+		filePath = editor.getPath()
+
+		child = exec \
+		'"N:\\Products\\Tools\\Html5 Tools\\FiverStudio\\FiverStudio.exe" ' + filePath,
+		{cwd: 'C:\\html5'},
+		(error, stdout, stderr) ->
+			 console.log stderr
+				unless error is null
+					 console.log 'error: ' + error

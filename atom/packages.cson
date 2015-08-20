@@ -1,0 +1,12 @@
+packages: [
+  "atom-ctags"
+  "atom-terminal"
+  "chester-atom-syntax"
+  "editorconfig"
+  "language-ini"
+  "minimap"
+  "package-sync"
+  "sublime-default-syntax"
+  "symbols-tree-view"
+  "vim-mode"
+]

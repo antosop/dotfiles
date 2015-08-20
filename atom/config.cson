@@ -3,13 +3,42 @@
     userId: "91c4765c-2ba2-2c2c-0ee9-2a450bc09821"
   welcome:
     showOnStartup: false
-  "tree-view":
-    showOnRightSide: true
-  core: {}
-  "vim-mode": {}
+  "tree-view": {}
+  core:
+    themes: [
+      "one-dark-ui"
+      "chester-atom-syntax"
+    ]
+    autoHideMenuBar: true
+    disabledPackages: [
+      "symbols-view"
+      "atom-ctags"
+      "symbols-tree-view"
+    ]
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
   editor:
     invisibles: {}
+    softWrap: true
   "file-watcher":
     promptWhenFileHasChangedOnDisk: false
   nuclide:
     remoteProjectsConfig: []
+  minimap: {}
+  "one-dark-ui":
+    layoutMode: "Compact"
+  jsformat: {}
+  "atom-ctags":
+    autoBuildTagsWhenActive: true
+    buildTimeout: 1200000
+    cmd: "ctags"
+    cmdArgs: "-R --languages=js"
+  "atom-ternjs": {}
+  "atom-terminal":
+    app: "C:\\Program Files\\ConEmu\\ConEmu64.exe"
+  "webbox-color": {}
+  "symbols-tree-view":
+    autoToggle: true
+".text.xml.xsl":
+  editor:
+    nonWordCharacters: "/\\()\"':,;<>~!@#$%^&*|+=[]{}`?-…"

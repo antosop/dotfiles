@@ -23,5 +23,26 @@
 # This file uses CoffeeScript Object Notation (CSON).
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
-'atom-text-editor.vim-mode:not(.normal-mode)':
+
+# VIM MODIFICATIONS
+'atom-text-editor.vim-mode.insert-mode':
   'j k': 'vim-mode:activate-normal-mode'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'ctrl-shift-T': 'atom-terminal:open'
+  ': w': 'core:save'
+  ': q': 'tabs:close-tab'
+  'ctrl-]': 'atom-ctags:go-to-declaration'
+  'ctrl-T': 'atom-ctags:return-from-declaration'
+
+'.tree-view':
+  'o': 'tree-view:open-selected-entry'
+
+'.item-views>*:not(.insert-mode)':
+  'g t': 'pane:show-next-item'
+  'g shift-t': 'pane:show-previous-item'
+  ': q': 'tabs:close-tab'
+
+# WORK KEYMAPS
+'atom-text-editor':
+  'alt-p': 'xaml:open-in-fiver-studio'
